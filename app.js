@@ -1,10 +1,12 @@
 const http = require('http');
+const fs = require('fs');
+const PORT = 3000;
 
-http.createServer(function(req,res){
-res.write("Testing fsfe");
-res.end();
-
+const server = http.createServer(function (req,res) {
+    res.writeHead(200, {'content-type':'text/html'})
+    fs.createReadStream('index.html').pipe(res);
 }
-).listen(3000);
+);
 
-console.log("Server Started on port 3000")
+server.listen(PORT);
+console.log(`server started on port ${PORT}`);
