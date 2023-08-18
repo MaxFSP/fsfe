@@ -1,19 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<title>My Portfolio</title>
-<meta name="description" content="Maximiliano">
-<meta name="keywords" content="html tutorial template">
+	<title>Websocket Demo</title>
 </head>
+
 <body>
-    <h1> Portfolio </h1>
 </body>
 <script>
-    let ws;
-    const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    ws = new WebSocket(`${proto}://${window.location.host}`);
 
-    ws.onmessage = (event) => {console.log(event.data)};
+let ws;
+try {
+  // Choose correct websocket proto
+  const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
+  ws = new WebSocket(`${proto}://${window.location.host}`);
+} catch(e) {
+  // 
+}
+ws.onmessage = (event) => {console.log(event.data) }
+
 </script>
-</html>
 
+</html>
